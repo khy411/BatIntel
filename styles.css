@@ -1,0 +1,244 @@
+#startup-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 9999;
+}
+
+.boot-content p {
+  margin: 10px 0;
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+  font-size: 1.2em;
+}
+
+.boot-content .hidden {
+  display: none;
+}
+
+
+
+body {
+    margin: 0;
+    height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0d0d0d, #222, #0d0d0d, #000000, #1a1a1a);
+    background-size: 600% 600%;
+    animation: batmanBackground 20s ease infinite;
+    color: #f5f5f5;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+@keyframes batmanBackground {
+    0% { background-position: 0% 0%; }
+    25% { background-position: 100% 0%; }
+    50% { background-position: 100% 100%; }
+    75% { background-position: 0% 100%; }
+    100% { background-position: 0% 0%; }
+}
+
+/*animation for task fade-in effect */
+@keyframes fadeInTask {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*task completed style */
+.completed {
+    text-decoration: line-through;
+    color: #999;
+    border-left: 4px solid #ffdc00;
+    box-shadow: 0 0 8px #ffdc00;
+    transition: all 0.3s ease;
+}
+
+/*transition for task list items */
+#list-container li {
+    transition: all 0.3s ease;
+}
+
+/* checkbox hover effect */
+#list-container input[type="checkbox"]:hover {
+    outline: 2px solid #ffdc00;
+    cursor: pointer;
+}
+
+/* button hover effects */
+.edit-btn:hover,
+.delete-btn:hover {
+    text-shadow: 0 0 5px #fff;
+}
+
+/* deploy button hover effect */
+#add_button {
+    position: relative;
+}
+
+#add_button::after {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 5px;
+    background: rgba(255, 220, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#add_button:hover::after {
+    opacity: 1;
+    box-shadow: 0 0 20px #ffdc00;
+}
+
+
+
+
+#list-container li {
+    animation: fadeInTask 0.3s ease-in-out;
+}
+
+/* container */
+#todo-container {
+    background-color: #1a1a1a;
+    border: 2px solid #333;
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+/* header */
+#header h1 {
+    text-align: center;
+    color: #ffdc00; /* yelllow for bat symbol */
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-shadow: 0 0 5px #ffdc00;
+}
+
+/* form styles */
+#todo-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.input-item {
+    flex-grow: 1;
+    padding: 10px;
+    background-color: #222;
+    border: 1px solid #444;
+    color: #fff;
+    border-radius: 5px;
+}
+
+#add_button {
+    background-color: #ffdc00;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    color: #000;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#add_button:hover {
+    background-color: #ffd000;
+}
+
+/* assignment section */
+h2 {
+    color: #ccc;
+    border-bottom: 1px solid #444;
+    padding-bottom: 5px;
+}
+
+/* task list */
+#list-container {
+    list-style: none;
+    padding: 0;
+}
+
+#list-container li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1e1e1e;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-left: 4px solid #555;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+#list-container li:hover {
+    border-left-color: #ffdc00;
+}
+
+#list-container li label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-grow: 1;
+}
+
+#list-container input[type="checkbox"] {
+    transform: scale(1.2);
+}
+
+/* edit & delete Buttons */
+.edit-btn,
+.delete-btn {
+    margin-left: 10px;
+    color: #888;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: color 0.2s ease;
+}
+
+.edit-btn:hover {
+    color: #4db8ff;
+}
+
+.delete-btn:hover {
+    color: #ff4d4d;
+}
+
+/* completed task style */
+.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+/* counters */
+.counter-container {
+    margin-top: 20px;
+    text-align: center;
+    color: #bbb;
+}
+
+#task-counters span {
+    font-weight: bold;
+    color: #ffdc00;
+}

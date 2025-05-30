@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <title>BatIntel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="startup-screen">
+        <div class="boot-content">
+            <p id="line1">WayneTech OS v7.42</p>
+            <p id="line2" class="hidden">Initializing protocols...</p>
+            <p id="line3" class="hidden">Loading BatIntel modules...<span class="dots"></span></p>
+            <p id="line4" class="hidden">Uplink to Batcave secured.</p>
+        </div>
+    </div>
+
+    <div id="todo-container">
+        <div id="header">
+            <h1>BatIntel</h1>
+        </div>
+
+        <div id="todo-form">
+            <input
+                type="text"
+                class="input-item"
+                name="input_box"
+                id="input_box"
+                placeholder="New missions..."
+            />
+            <button id="add_button" onclick="addTask()">Deploy</button>
+        </div>  
+
+        <h2>WayneTech Assignments</h2>
+        <ul id="list-container"></ul>
+
+        <div class="counter-container">
+            <div id="task-counters">
+                Missions Accomplished: <span id="completed-count">0</span> |
+                Active Missions: <span id="pending-count">0</span>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
