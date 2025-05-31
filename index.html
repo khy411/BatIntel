@@ -6,60 +6,69 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="startup-screen">
-        <div class="boot-content">
-            <p id="line1">WayneTech OS v7.42</p>
-            <p id="line2" class="hidden">Initializing protocols...</p>
-            <p id="line3" class="hidden">Loading BatIntel modules...<span class="dots"></span></p>
-            <p id="line4" class="hidden">Uplink to Batcave secured.</p>
-        </div>
-    </div>
-
-    <div id="app" style="display: none;">
-        <div id="sidebar">
-            <button onclick="switchTab('todo-tab')">Missions</button>
-            <button onclick="switchTab('pomodoro-tab')">Patrol Timer</button>
-        </div>
-    </div>
-
-    <div id="main-content">
-
-        <!-- to do -->
-        <div id="todo-tab" class="tab">
-            <div id="header"><h1>BatIntel</h1></div>
-
-            <div id="todo-form">
-                <input
-                    type="text"
-                    class="input-item"
-                    name="input_box"
-                    id="input_box"
-                    placeholder="New missions..."
-                />
-                <button id="add_button" onclick="addTask()">Deploy</button>
-            </div>  
-
-            <h2>WayneTech Missions</h2>
-            <ul id="list-container"></ul>
-
-            <div class="counter-container">
-                <div id="task-counters">
-                    Missions Accomplished: <span id="completed-count">0</span> |
-                    Active Missions: <span id="pending-count">0</span>
-                </div>
+    <div id="app">
+        <!-- startup screen -->
+        <div v-if="showStartup" id="startup-screen">
+            <div class="boot-content">
+                <p v-for="(line, index) in bootLines" :key="index" v-show="line.visible">{{ line.text }}</p>
             </div>
         </div>
 
-        <!-- pomodoro -->
-        <div id="pomodoro-tab" class="tab" style="display:none;">
-            <h3>Patrol Timer</h3>
-            <div id="timer-display">25:00</div>
-            <button onclick="startTimer()">Start Patrol</button>
-            <button onclick="pauseTimer()">Pause</button>
-            <button onclick="resetTimer()">Abort Mission</button>
+        <!-- main -->
+        <div v-else>
+            <div id="sidebar">
+                <button @click="currentTab = 'todo-tab'">Missions</button>
+                <button @click="currentTab = 'pomodoro-tab'">Patrol Timer</button>
+            </div>
+
+            <div id="main-content">
+                <!-- to-do tab -->
+                <div id="todo-tab" class="tab" v-show="currentTab === 'todo-tab'">
+                    <div id="header"><h1>BatIntel</h1></div>
+
+                    <div id="todo-form">
+                        <input
+                            type="text"
+                            class="input-item"
+                            v-model="newTask"
+                            placeholder="New missions..."
+                        />
+                        <button id="add_button" @click="addTask">Deploy</button>
+                    </div>  
+
+                    <h2>WayneTech Missions</h2>
+                    <ul id="list-container">
+                        <li v-for="(task, index) in tasks" :key="index" :class="{ completed: task.completed }">
+                            <label>
+                                <input type="checkbox" v-model="task.completed" />
+                                {{ task.text }}
+                            </label>
+                            <span class="edit-btn" @click="editTask(index)">Edit</span>
+                            <span class="delete-btn" @click="deleteTask(index)">Delete</span>
+                        </li>
+                    </ul>
+
+                    <div class="counter-container">
+                        <div id="task-counters">
+                            Missions Accomplished: <span>{{ completedCount }}</span> |
+                            Active Missions: <span>{{ pendingCount }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- pomodoro tab -->
+                <div id="pomodoro-tab" class="tab" v-show="currentTab === 'pomodoro-tab'">
+                    <h3>Patrol Timer</h3>
+                    <div id="timer-display">{{ formattedTime }}</div>
+                    <button @click="startTimer">Start Patrol</button>
+                    <button @click="pauseTimer">Pause</button>
+                    <button @click="resetTimer">Abort Mission</button>
+                </div>
+            </div>
         </div>
     </div>
 
-    <script type="text/javascript" src="script.js"></script>
+    <script src="https://unpkg.com/vue@3.4.21/dist/vue.global.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
