@@ -15,30 +15,48 @@
         </div>
     </div>
 
-    <div id="todo-container">
-        <div id="header">
-            <h1>BatIntel</h1>
+    <div id="app" style="display: none;">
+        <div id="sidebar">
+            <button onclick="switchTab('todo-tab')">Missions</button>
+            <button onclick="switchTab('pomodoro-tab')">Patrol Timer</button>
+        </div>
+    </div>
+
+    <div id="main-content">
+
+        <!-- to do -->
+        <div id="todo-tab" class="tab">
+            <div id="header"><h1>BatIntel</h1></div>
+
+            <div id="todo-form">
+                <input
+                    type="text"
+                    class="input-item"
+                    name="input_box"
+                    id="input_box"
+                    placeholder="New missions..."
+                />
+                <button id="add_button" onclick="addTask()">Deploy</button>
+            </div>  
+
+            <h2>WayneTech Missions</h2>
+            <ul id="list-container"></ul>
+
+            <div class="counter-container">
+                <div id="task-counters">
+                    Missions Accomplished: <span id="completed-count">0</span> |
+                    Active Missions: <span id="pending-count">0</span>
+                </div>
+            </div>
         </div>
 
-        <div id="todo-form">
-            <input
-                type="text"
-                class="input-item"
-                name="input_box"
-                id="input_box"
-                placeholder="New missions..."
-            />
-            <button id="add_button" onclick="addTask()">Deploy</button>
-        </div>  
-
-        <h2>WayneTech Assignments</h2>
-        <ul id="list-container"></ul>
-
-        <div class="counter-container">
-            <div id="task-counters">
-                Missions Accomplished: <span id="completed-count">0</span> |
-                Active Missions: <span id="pending-count">0</span>
-            </div>
+        <!-- pomodoro -->
+        <div id="pomodoro-tab" class="tab" style="display:none;">
+            <h3>Patrol Timer</h3>
+            <div id="timer-display">25:00</div>
+            <button onclick="startTimer()">Start Patrol</button>
+            <button onclick="pauseTimer()">Pause</button>
+            <button onclick="resetTimer()">Abort Mission</button>
         </div>
     </div>
 
