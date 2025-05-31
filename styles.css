@@ -1,31 +1,26 @@
 #startup-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: black;
-  color: #00ff00;
-  font-family: 'Courier New', monospace;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  z-index: 9999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    color: #00ff00;
+    font-family: 'Courier New', Courier, monospace;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 9999;
+    }
+
+.boot-content {
+    padding: 20px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    font-size: 1.2em;
 }
-
-.boot-content p {
-  margin: 10px 0;
-  opacity: 0;
-  transition: opacity 0.5s ease-in;
-  font-size: 1.2em;
-}
-
-.boot-content .hidden {
-  display: none;
-}
-
-
 
 body {
     margin: 0;
@@ -278,7 +273,7 @@ h2 {
 }
 
 /* pomodoro timer styles */
-#pomodoro-tab h3 {
+#main-content h3 {
     font-size: 24px;
     font-family: 'Segoe UI', sans-serif;
     margin-bottom: 20px;
@@ -287,12 +282,16 @@ h2 {
 #timer-display {
     font-size: 48px;
     font-weight: bold;
+    text-align: center;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
     margin: 20px 0;
     padding: 20px;
     border: 2px solid #ffdc00;
     border-radius: 10px;    
     background-color: #222;
-    columns: #ffcc00;
+    color: #ffcc00;
 }
 
 button {
