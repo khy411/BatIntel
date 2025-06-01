@@ -229,6 +229,7 @@ h2 {
     color: #ffdc00;
 }
 
+/* sidebar styles */
 #sidebar {
     position: fixed;
     top: 0;
@@ -270,6 +271,16 @@ h2 {
     padding: 30px;
     width: calc(100% - 220px);
     box-sizing: border-box;
+}
+
+/* sidebar header */
+.logo {
+    position: fixed;
+    top: 0px;
+    left: 50px;
+    width: auto;
+    height: 80px;
+    z-index: 9998;
 }
 
 /* pomodoro timer styles */
